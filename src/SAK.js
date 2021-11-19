@@ -82,19 +82,19 @@ function init() {
 
     const dirLight = new THREE.DirectionalLight( 0xffffff, 1.25 );
     dirLight.position.set( 0, 100, 100 );
-    dirLight.castShadow = true;
+    // dirLight.castShadow = true;
     scene.add( dirLight );
 
     const light2 = new THREE.SpotLight(0xffffff, 0.6, 10000);
     light2.position.set(-1255, -1000, -1200);
     //light.angle = Math.PI / 9;
-    light2.castShadow = true;
-    light2.shadow.radius = 135;
-    light2.shadow.camera.near = 85;
-    light2.shadow.camera.far = 1000;
-    light2.shadow.mapSize.width = 2048;
-    light2.shadow.mapSize.height = 2048;
-    light2.shadow.bias = 0.0001;
+    // light2.castShadow = true;
+    // light2.shadow.radius = 135;
+    // light2.shadow.camera.near = 85;
+    // light2.shadow.camera.far = 1000;
+    // light2.shadow.mapSize.width = 2048;
+    // light2.shadow.mapSize.height = 2048;
+    // light2.shadow.bias = 0.0001;
     scene.add(light2);
 
 
