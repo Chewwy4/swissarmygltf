@@ -74,18 +74,18 @@ function init() {
 
     scene = new THREE.Scene();
    // scene.background = new THREE.Color(0xffffff);
-    scene.add(new THREE.AmbientLight(0x2e2e2e, 0.5));
+   ;
    
-    const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444, 0.25 );
+    const hemiLight = new THREE.HemisphereLight( 0xffffff, 0x444444, 0.1 );
     hemiLight.position.set( 0, 100, 0 );
     scene.add( hemiLight );
 
-    const dirLight = new THREE.DirectionalLight( 0xffffff, 1.25 );
+    const dirLight = new THREE.DirectionalLight( 0xffffff, 0.75 );
     dirLight.position.set( 0, 100, 100 );
     // dirLight.castShadow = true;
     scene.add( dirLight );
 
-    const light2 = new THREE.SpotLight(0xffffff, 0.6, 10000);
+    const light2 = new THREE.SpotLight(0xffffff, 0.1, 1000);
     light2.position.set(-1255, -1000, -1200);
     //light.angle = Math.PI / 9;
     // light2.castShadow = true;
@@ -111,7 +111,7 @@ function init() {
     renderer.shadowMap.type = THREE.PCFShadowMap;
    // renderer.physicallyCorrectLights = true;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 0.4; 
+    renderer.toneMappingExposure = 0.5; 
     renderer.shadowMap.enabled = true;
     renderer.outputEncoding = THREE.sRGBEncoding;
     //renderer.autoClear = false;
@@ -357,31 +357,21 @@ var btlopnr1 = swissKnife.getObjectByName ('btlopn1', true)
 //twz.scale.x = -1;
 
 //	twz.applyMatrix4( new THREE.Matrix4().makeRotationY( -1 ) );
-if ( btlopnr1.rotation.y < -0.5 ) {
+if ( btlopnr1.rotation.z > 0.5 ) {
 document.getElementById("btlopn1Img").style.backgroundColor = "#FFFFFF";
 new TWEEN.Tween(btlopnr1.rotation ).to( {		  
-y:  0,		
+z:  0,		
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()
-new TWEEN.Tween( btlopnr1.position ).to( {
-    x:  0,
-    //y:  -12,
-    z: 0
-    }, 500 )
-    .easing( TWEEN.Easing.Elastic.Out).start()}
+}
 else { 
 document.getElementById("btlopn1Img").style.backgroundColor = "#F54531";
 document.getElementById("btlopn1Img").style.opacity = "1";
 new TWEEN.Tween(btlopnr1.rotation ).to( {
-y:  -1,
+z:  1,
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()	
-new TWEEN.Tween( btlopnr1.position ).to( {
-      x:  -25,
-    //y:  Math.PI /  12,
-        z:  -10
-        }, 500 )
-    .easing( TWEEN.Easing.Elastic.Out).start()}}	
+}}	
 
 
 
@@ -389,12 +379,12 @@ new TWEEN.Tween( btlopnr1.position ).to( {
 
 document.getElementById("blade1img").onclick = function () {	
 var bla1 = swissKnife.getObjectByName ('bld1', true)	
-if ( bla1.rotation.y > 0.5 ) {
+if ( bla1.rotation.z < -0.5 ) {
     document.getElementById("blade1img").style.backgroundColor = "#FFFFFF";
     // document.getElementById("Tbtlopn1").style.backgroundColor = "#ffffff";
     // document.getElementById("Tbtlopn1").style.opacity = "0.7";
     new TWEEN.Tween( bla1.rotation ).to( {		  
-    y:  0,		
+    z:  0,		
     }, 500 )
     .easing( TWEEN.Easing.Elastic.Out).start()
    } else { 
@@ -402,42 +392,32 @@ if ( bla1.rotation.y > 0.5 ) {
     // document.getElementById("Tbtlopn1").style.backgroundColor = "#F54531";
     // document.getElementById("Tbtlopn1").style.opacity = "1";
   new TWEEN.Tween( bla1.rotation ).to( {
-    y:  2.85,
+    z:  -2.85,
     }, 1500 )
   .easing( TWEEN.Easing.Elastic.Out).start()}}
 
 
 
   document.getElementById("blade2img").onclick = function () {
-var bla2 = swissKnife.getObjectByName ('bld2', true)	
-//twz.scale.x = -1;
-
-//	twz.applyMatrix4( new THREE.Matrix4().makeRotationY( -1 ) );
-if ( bla2.rotation.y > 0.5 ) {
-document.getElementById("blade2img").style.backgroundColor = "#FFFFFF";
-new TWEEN.Tween(bla2.rotation ).to( {		  
-y:  0,		
-}, 500 )
-.easing( TWEEN.Easing.Elastic.Out).start()
-new TWEEN.Tween( bla2.position ).to( {
-    x:  -45,
-    //y:  -12,
-    z: -55
+    var bla2 = swissKnife.getObjectByName ('bld2', true)	
+    //twz.scale.x = -1;
+    
+    //	twz.applyMatrix4( new THREE.Matrix4().makeRotationY( -1 ) );
+    if ( bla2.rotation.z > 0.05 ) {
+    document.getElementById("blade2img").style.backgroundColor = "#FFFFFF";
+    new TWEEN.Tween(bla2.rotation ).to( {		  
+    z:  0,		
     }, 500 )
-    .easing( TWEEN.Easing.Elastic.Out).start()}
-else { 
-document.getElementById("blade2img").style.backgroundColor = "#F54531";
-document.getElementById("blade2img").style.opacity = "1";
-new TWEEN.Tween(bla2.rotation ).to( {
-y:  1,
-}, 500 )
-.easing( TWEEN.Easing.Elastic.Out).start()	
-new TWEEN.Tween( bla2.position ).to( {
-      x:  -2.5,
-    //y:  Math.PI /  12,
-        z:  -81
-        }, 500 )
-    .easing( TWEEN.Easing.Elastic.Out).start()}}
+    .easing( TWEEN.Easing.Elastic.Out).start()
+}
+    else { 
+    document.getElementById("blade2img").style.backgroundColor = "#F54531";
+    document.getElementById("blade2img").style.opacity = "1";
+    new TWEEN.Tween(bla2.rotation ).to( {
+    z: 1
+    }, 1500 )
+    .easing( TWEEN.Easing.Elastic.Out).start()	
+}}
 
 
     document.getElementById("blade3img").onclick = function () {
@@ -445,10 +425,10 @@ var bla3 = swissKnife.getObjectByName ('bld3', true)
 //twz.scale.x = -1;
 
 //	twz.applyMatrix4( new THREE.Matrix4().makeRotationY( -1 ) );
-if ( bla3.rotation.y > 0.5 ) {
+if ( bla3.rotation.z < -0.5 ) {
 document.getElementById("blade3img").style.backgroundColor = "#FFFFFF";
 new TWEEN.Tween(bla3.rotation ).to( {		  
-y:  0,		
+z:  0,		
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()
 }
@@ -456,7 +436,7 @@ else {
 document.getElementById("blade3img").style.backgroundColor = "#F54531";
 document.getElementById("blade3img").style.opacity = "1";
 new TWEEN.Tween(bla3.rotation ).to( {
-y:  1.75,
+z:  -1.75,
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()	
 }}
@@ -467,31 +447,21 @@ var bla5 = swissKnife.getObjectByName ('bld5', true)
 //twz.scale.x = -1;
 
 //	twz.applyMatrix4( new THREE.Matrix4().makeRotationY( -1 ) );
-if ( bla5.rotation.y > 0.5 ) {
+if ( bla5.rotation.z >0) {
 document.getElementById("blade5img").style.backgroundColor = "#FFFFFF";
 new TWEEN.Tween(bla5.rotation ).to( {		  
-y:  0,		
+z:  -3,		
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()
-new TWEEN.Tween( bla5.position ).to( {
-    x:  -25,
-    //y:  -12,
-    z: -45
-    }, 500 )
-    .easing( TWEEN.Easing.Elastic.Out).start()}
+}
 else { 
 document.getElementById("blade5img").style.backgroundColor = "#F54531";
 document.getElementById("blade5img").style.opacity = "1";
 new TWEEN.Tween(bla5.rotation ).to( {
-y:  1,
+z:  0.015,
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()	
-new TWEEN.Tween( bla5.position ).to( {
-      x:  0,
-    //y:  Math.PI /  12,
-        z:  -59
-        }, 500 )
-    .easing( TWEEN.Easing.Elastic.Out).start()}}
+}}
 
 
 
@@ -502,31 +472,21 @@ var blse = swissKnife.getObjectByName ('bldser', true)
 //twz.scale.x = -1;
 
 //	twz.applyMatrix4( new THREE.Matrix4().makeRotationY( -1 ) );
-if ( blse.rotation.y < -0.5 ) {
+if ( blse.rotation.z >0.5 ) {
 document.getElementById("bladeseratedimg").style.backgroundColor = "#FFFFFF";
 new TWEEN.Tween(blse.rotation ).to( {		  
-y:  0,		
+z:  0,		
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()
-new TWEEN.Tween( blse.position ).to( {
-    x:  0,
-    //y:  -12,
-    z: 0
-    }, 500 )
-    .easing( TWEEN.Easing.Elastic.Out).start()}
+}
 else { 
 document.getElementById("bladeseratedimg").style.backgroundColor = "#F54531";
 document.getElementById("bladeseratedimg").style.opacity = "1";
 new TWEEN.Tween(blse.rotation ).to( {
-y:  -2.5,
+z:  2.5,
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()	
-new TWEEN.Tween( blse.position ).to( {
-      x:  -20,
-    //y:  Math.PI /  12,
-        z:  -47
-        }, 500 )
-    .easing( TWEEN.Easing.Elastic.Out).start()}}
+}}
 
 
 document.getElementById("tweezerImg").onclick = function () {
@@ -534,31 +494,21 @@ var twz = swissKnife.getObjectByName ('tweezer', true)
 //twz.scale.x = -1;
 
 //	twz.applyMatrix4( new THREE.Matrix4().makeRotationY( -1 ) );
-if ( twz.rotation.y < -0.5 ) {
+if ( twz.rotation.z >0.5 ) {
 document.getElementById("tweezerImg").style.backgroundColor = "#FFFFFF";
 new TWEEN.Tween(twz.rotation ).to( {		  
-y:  0,		
-}, 25 )
+z:  0,		
+}, 750 )
 .easing( TWEEN.Easing.Elastic.Out).start()
-new TWEEN.Tween( twz.position ).to( {
-    x:  0,
-    //y:  -12,
-    z: 0
-    }, 25 )
-    .easing( TWEEN.Easing.Elastic.Out).start()}
+}
 else { 
 document.getElementById("tweezerImg").style.backgroundColor = "#F54531";
 document.getElementById("tweezerImg").style.opacity = "1";
 new TWEEN.Tween(twz.rotation ).to( {
-y:  -2.5,
-}, 200 )
+z:  1.5,
+}, 700 )
 .easing( TWEEN.Easing.Elastic.Out).start()	
-new TWEEN.Tween( twz.position ).to( {
-      x:  -20,
-    //y:  Math.PI /  12,
-        z:  -50
-        }, 200 )
-    .easing( TWEEN.Easing.Elastic.Out).start()}}
+}}
 
 
     document.getElementById("fileImg").onclick = function () {
@@ -566,73 +516,46 @@ new TWEEN.Tween( twz.position ).to( {
     //fl1.scale.x = -1;
     // fl1.applyMatrix4( new THREE.Matrix4().makeRotationY( 0 ) );
     //fl1 = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(0, 0, 155), Math.PI / 6.0);
-     if ( fl1.rotation.y > 0.5 ) {
+     if ( fl1.rotation.y < -1.5 ) {
         // if ( bladeserrated.position.x > -0.5 ) {
     document.getElementById("fileImg").style.backgroundColor = "#ffffff";		 
     new TWEEN.Tween(fl1.rotation).to( {		  
-    y:  0,		
+    y: 1.5  ,		
     }, 500 )
     .easing( TWEEN.Easing.Elastic.Out).start()
-    new TWEEN.Tween( fl1.position ).to( {
-      x:  -2,
-    //y:  Math.PI /  12,
-        z:  -18
-        }, 500 )
-    .easing( TWEEN.Easing.Elastic.Out).start() }
+ }
 
 else { 
 document.getElementById("fileImg").style.backgroundColor = "#F54531";	
 document.getElementById("fileImg").style.opacity = "1";
     new TWEEN.Tween( fl1.rotation ).to( {
             //x:  -30,
-            y:   1.75,
+            y:   -1.75,
             //z:  225
             }, 500 )
     .easing( TWEEN.Easing.Elastic.Out).start()
     //ZoomLeisure.disabled = true;
-    new TWEEN.Tween( fl1.position ).to( {
-      x:  -8,
-    //y:  Math.PI /  12,
-        z:  -30
-        }, 500 )
-    .easing( TWEEN.Easing.Elastic.Out).start()}
-}
+}}
 
 document.getElementById("rulerImg").onclick = function () {
     var rul = swissKnife.getObjectByName ('ruler', true)
-    //fl1.scale.x = -1;
-    // fl1.applyMatrix4( new THREE.Matrix4().makeRotationY( 0 ) );
-    //fl1 = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(0, 0, 155), Math.PI / 6.0);
      if ( rul.rotation.y > 0.5 ) {
-        // if ( bladeserrated.position.x > -0.5 ) {
     document.getElementById("rulerImg").style.backgroundColor = "#ffffff";		 
     new TWEEN.Tween(rul.rotation).to( {		  
-    y:  0,		
+    y:  -1.5 ,		
     }, 500 )
     .easing( TWEEN.Easing.Elastic.Out).start()
-    new TWEEN.Tween( rul.position ).to( {
-      x:  -2,
-    //y:  Math.PI /  12,
-        z:  -18
-        }, 500 )
-    .easing( TWEEN.Easing.Elastic.Out).start() }
-
-else { 
+}else { 
 document.getElementById("rulerImg").style.backgroundColor = "#F54531";	
 document.getElementById("rulerImg").style.opacity = "1";
     new TWEEN.Tween( rul.rotation ).to( {
             //x:  -30,
-            y:   1.75,
+            y:   1.5,
             //z:  225
             }, 500 )
     .easing( TWEEN.Easing.Elastic.Out).start()
     //ZoomLeisure.disabled = true;
-    new TWEEN.Tween( rul.position ).to( {
-      x:  -8,
-    //y:  Math.PI /  12,
-        z:  -30
-        }, 500 )
-    .easing( TWEEN.Easing.Elastic.Out).start()}
+}
 } 
 
 
@@ -640,17 +563,17 @@ document.getElementById("rulerImg").style.opacity = "1";
 
 document.getElementById("corkScrewImg").onclick = function () {
 var cork = swissKnife.getObjectByName ('pHelix5', true)	
-if ( cork.rotation.y > 0.5 ) {
+if ( cork.rotation.z < -0.5 ) {
 document.getElementById("corkScrewImg").style.backgroundColor = "#FFFFFF";
 new TWEEN.Tween( cork.rotation ).to( {		  
-y:  0,		
+z:  0,		
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()
 } else { 
 document.getElementById("corkScrewImg").style.backgroundColor = "#F54531";
 document.getElementById("corkScrewImg").style.opacity = "1";
 new TWEEN.Tween(  cork.rotation ).to( {
-y:  1.75,
+z:  -1.75,
 }, 1500 )
 .easing( TWEEN.Easing.Elastic.Out).start()}
     }
@@ -658,10 +581,10 @@ y:  1.75,
 
     document.getElementById("pliersImg").onclick = function () {
     var pli = swissKnife.getObjectByName ('Pliers', true)
-     if ( pli.rotation.y > 2 ) {
+     if ( pli.rotation.z < - 2 ) {
 document.getElementById("pliersImg").style.backgroundColor = "#ffffff";		 
 new TWEEN.Tween(pli.rotation).to( {		  
-y:  0,		
+z:  0,		
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()
 
@@ -670,7 +593,7 @@ document.getElementById("pliersImg").style.backgroundColor = "#F54531";
 document.getElementById("pliersImg").style.opacity = "1";	
     new TWEEN.Tween( pli.rotation ).to( {
             //x:  -30,
-            y:   2.25,
+            z:   -2.25,
             //z:  225
             }, 1500 )
     .easing( TWEEN.Easing.Elastic.Out).start()}}
@@ -685,11 +608,11 @@ document.getElementById("pliersImg").style.opacity = "1";
 
     var sw = swissKnife.getObjectByName ('saw', true)
 
-     if ( sw.rotation.y > 0.5 ) {
+     if ( sw.rotation.z < -0.5 ) {
         // if ( bladeserrated.position.x > -0.5 ) {
 document.getElementById("saw").style.backgroundColor = "#ffffff";		 
 new TWEEN.Tween(sw.rotation).to( {		  
-y:  0,		
+z:  0,		
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()
 
@@ -698,7 +621,7 @@ document.getElementById("saw").style.backgroundColor = "#F54531";
 document.getElementById("saw").style.opacity = "1";
     new TWEEN.Tween( sw.rotation ).to( {
             //x:  -30,
-            y:   0.85,
+            z:   -0.85,
             //z:  225
             }, 1000 )
     .easing( TWEEN.Easing.Elastic.Out).start()}}												
@@ -708,18 +631,18 @@ document.getElementById("saw").style.opacity = "1";
     document.getElementById("magnifImg").onclick = function () {
     var mag = swissKnife.getObjectByName ('magnify', true)	
 
-if ( mag.rotation.y > 0.5 ) {
+if ( mag.rotation.z < -0.5 ) {
     document.getElementById("magnifImg").style.backgroundColor = "#ffffff";	
 
 new TWEEN.Tween( mag.rotation ).to( {		  
-y:  0,		
+z:  0,		
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()
 } else { 
 document.getElementById("magnifImg").style.backgroundColor = "#F54531";	
 document.getElementById("magnifImg").style.opacity = "1";
 new TWEEN.Tween(  mag.rotation ).to( {
-y:  1.4,
+z:  -1.4,
 }, 1000 )
 .easing( TWEEN.Easing.Elastic.Out).start()}
     }
@@ -729,18 +652,18 @@ y:  1.4,
     document.getElementById("scissorsImg").onclick = function () {
     var sci = swissKnife.getObjectByName ('scissors2', true)	
 
-if ( sci.rotation.y > 0.5 ) {
+if ( sci.rotation.z < -0.5 ) {
     document.getElementById("scissorsImg").style.backgroundColor = "#ffffff";	
 
 new TWEEN.Tween( sci.rotation ).to( {		  
-y:  0,		
+z:  0,		
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()
 } else { 
 document.getElementById("scissorsImg").style.backgroundColor = "#F54531";	
 document.getElementById("scissorsImg").style.opacity = "1";
 new TWEEN.Tween(  sci.rotation ).to( {
-y:  2.75,
+z:  -2.75,
 }, 1000 )
 .easing( TWEEN.Easing.Elastic.Out).start()}
     }
@@ -750,18 +673,18 @@ y:  2.75,
     document.getElementById("hexImg").onclick = function () {
     var hex = swissKnife.getObjectByName ('hexm', true)	
 
-if ( hex.rotation.y > 0.5 ) {
+if ( hex.rotation.z < -0.5 ) {
     document.getElementById("hexImg").style.backgroundColor = "#ffffff";	
 
 new TWEEN.Tween( hex.rotation ).to( {		  
-y:  0,		
+z:  0,		
 }, 500 )
 .easing( TWEEN.Easing.Elastic.Out).start()
 } else { 
 document.getElementById("hexImg").style.backgroundColor = "#F54531";	
 document.getElementById("hexImg").style.opacity = "1";
 new TWEEN.Tween(  hex.rotation ).to( {
-y:  1.75,
+z:  -1.75,
 }, 1000 )
 .easing( TWEEN.Easing.Elastic.Out).start()}
     }
