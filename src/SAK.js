@@ -516,11 +516,11 @@ z:  1.5,
     //fl1.scale.x = -1;
     // fl1.applyMatrix4( new THREE.Matrix4().makeRotationY( 0 ) );
     //fl1 = new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(0, 0, 155), Math.PI / 6.0);
-     if ( fl1.rotation.y < -1.5 ) {
+     if ( fl1.rotation.z > 1.5 ) {
         // if ( bladeserrated.position.x > -0.5 ) {
     document.getElementById("fileImg").style.backgroundColor = "#ffffff";		 
     new TWEEN.Tween(fl1.rotation).to( {		  
-    y: 1.5  ,		
+    z: 0  ,		
     }, 500 )
     .easing( TWEEN.Easing.Elastic.Out).start()
  }
@@ -530,7 +530,7 @@ document.getElementById("fileImg").style.backgroundColor = "#F54531";
 document.getElementById("fileImg").style.opacity = "1";
     new TWEEN.Tween( fl1.rotation ).to( {
             //x:  -30,
-            y:   -1.75,
+            z:   1.75,
             //z:  225
             }, 500 )
     .easing( TWEEN.Easing.Elastic.Out).start()
