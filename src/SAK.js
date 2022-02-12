@@ -228,8 +228,8 @@ if (window.innerWidth <810 ) {
 //     camera.position.set(0, 150, 400);
 //  }
  else {
-swissKnife.position.y = 30;
-camera.position.set(0, 150, 350);
+swissKnife.position.y = 10;
+camera.position.set(0, 150, 400);
  }
 }
 
@@ -256,8 +256,8 @@ function onWindowResize() {
     //  }
      else {
         //keep normal camera position
-    swissKnife.position.y = 30;
-    camera.position.set(0, 150, 350);
+    swissKnife.position.y = 10;
+    camera.position.set(0, 150, 400);
    //FXAA antialiasing
      }
  }
